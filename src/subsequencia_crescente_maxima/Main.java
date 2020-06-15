@@ -1,3 +1,5 @@
+package subsequencia_crescente_maxima;
+
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Random;
@@ -5,7 +7,7 @@ import java.util.Scanner;
 
 /**
  * 
- * @author Camila Campos, ... (coloque seu nome)
+ * @author Camila Silva Campos
  *
  */
 public class Main {
@@ -20,7 +22,9 @@ public class Main {
 	}
 
 	/**
-	 * @brief Menu
+	 * 
+	 * @brief Menu para escolha dos algoritmos implementados
+	 *
 	 */
 	public static void menu() {
 
@@ -33,47 +37,16 @@ public class Main {
 			System.out.println("\n     | Subsequência Crescente Máxima: ");
 			System.out.println("     |    1 - Força bruta (75, sujeito à grandes variações) ");
 			System.out.println("     |    2 - Programação dinâmica (25.000) ");
-			System.out.println("\n     | (Nome do seu algoritmo): ");
-			System.out.println("     |    3 - XXX ");
-			System.out.println("     |    4 - YYY ");
-			System.out.println("\n     | (Nome do seu algoritmo): ");
-			System.out.println("     |    5 - XXX ");
-			System.out.println("     |    6 - YYY ");
-			System.out.println("\n     | (Nome do seu algoritmo): ");
-			System.out.println("     |    7 - XXX ");
-			System.out.println("     |    8 - YYY ");
-			System.out.println("\n     | 0 - Sair ");
 
 			System.out.print("\n Digite sua opção: ");
 			opcaoMenu = sc.nextInt();
 			System.out.print("\n");
 			switch (opcaoMenu) {
 			case 1:
-				iniciaSubseqCresMáxima("Força Bruta");
+				iniciaSubseqCresMaxima("Força Bruta");
 				break;
 			case 2:
-				iniciaSubseqCresMáxima("Programação Dinâmica");
-
-				break;
-			case 3:
-				System.out.println("\n ==> (Nome do seu algoritmo): ");
-				break;
-			case 4:
-				System.out.println("\n ==> (Nome do seu algoritmo): ");
-				break;
-			case 5:
-				System.out.println("\n ==> (Nome do seu algoritmo): ");
-				break;
-			case 6:
-				System.out.println("\n ==> (Nome do seu algoritmo): ");
-				break;
-			case 7:
-				System.out.println("\n ==> (Nome do seu algoritmo): ");
-				break;
-			case 8:
-				System.out.println("\n ==> (Nome do seu algoritmo): ");
-				break;
-			case 0:
+				iniciaSubseqCresMaxima("Programação Dinâmica");
 				break;
 			default:
 				System.out.println("\n  >>> Opção Inválida! <<<\n");
@@ -84,7 +57,14 @@ public class Main {
 		System.out.println("\n\n FIM DO PROGRAMA! ");
 	}
 
-	public static void iniciaSubseqCresMáxima(String tipoAlgoritmo) {
+	/**
+	 * 
+	 * @brief Inicializa o algoritmo selecionado pelo usuário
+	 * 
+	 * @param tipoAlgoritmo: nome do algoritmo selecionado
+	 *
+	 */
+	public static void iniciaSubseqCresMaxima(String tipoAlgoritmo) {
 		int opcaoEntrada;
 		long tempoGasto;
 		ArrayList<Integer> conjunto = new ArrayList<Integer>();
@@ -122,15 +102,15 @@ public class Main {
 		case "Força Bruta":
 			tempoGasto = System.currentTimeMillis();
 			resultado = SubsequenciaCrescMaxima.forcaBruta(conjunto);
-			System.out.println("\n   -> Tempo gasto = " + (System.currentTimeMillis() - tempoGasto) + " milissegundos");
-			System.out.println("   ->  Resultado: " + resultado);
+			System.out.println("\n   -> Tempo gasto: " + (System.currentTimeMillis() - tempoGasto) + " milissegundos");
+			System.out.println("\n   ->  Resultado: " + resultado);
 			break;
 
 		case "Programação Dinâmica":
 			tempoGasto = System.currentTimeMillis();
 			resultado = SubsequenciaCrescMaxima.programacaoDinamica(conjunto);
-			System.out.println("\n   -> Tempo gasto = " + (System.currentTimeMillis() - tempoGasto) + " milissegundos");
-			System.out.println("   ->  Resultado: " + resultado);
+			System.out.println("\n   -> Tempo gasto: " + (System.currentTimeMillis() - tempoGasto) + " milissegundos");
+			System.out.println("\n   ->  Resultado: " + resultado);
 			break;
 		default:
 			System.out.println("\n  >>> Opção Inválida! <<<\n");
@@ -138,6 +118,14 @@ public class Main {
 		}
 	}
 
+	/**
+	 * @brief Gera conjunto aleatório de inteiros
+	 * 
+	 * @param tamanho do conjunto
+	 * 
+	 * @return conjunto de inteiros gerados
+	 * 
+	 */
 	public static ArrayList<Integer> gerarConjunto(int tamanho) {
 		ArrayList<Integer> conjunto = new ArrayList<Integer>();
 		for (int i = 0; i < tamanho; i++) {
@@ -146,6 +134,12 @@ public class Main {
 		return conjunto;
 	}
 
+	/**
+	 * @brief Lê conjunto de inteiros pelo teclado
+	 * 
+	 * @return conjunto de inteiros inseridos
+	 * 
+	 */
 	public static ArrayList<Integer> lerConjunto() {
 		int num = 0;
 		ArrayList<Integer> sequencia = new ArrayList<Integer>();

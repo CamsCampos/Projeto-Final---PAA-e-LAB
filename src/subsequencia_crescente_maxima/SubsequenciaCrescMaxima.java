@@ -1,3 +1,5 @@
+package subsequencia_crescente_maxima;
+
 import java.util.ArrayList;
 
 /**
