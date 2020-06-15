@@ -5,22 +5,37 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
+/**
+ * @brief Resolve o problema de Subsequência de Soma Máxima
+ *
+ * @author Belle Nerissa Aguiar Elizeu
+ *
+ */
+
 public class main {
 
     public static void main(String[] args) {
 
+
+        /**
+         * @brief Resultados dos algoritmos de subsequência de Soma Máxima
+         *
+         * @param listaMaxSum Sequência de inteiros.
+         *
+         * @return Tempo decorrido dos métodos
+         * @return Somas máximas encontradas na sequência de inteiros pelo dois algoritmos
+         */
+
         System.out.println("\n ===== ALGORITMO SUBSEQUÊNCIA DE SOMA MÁXIMA =====");
 
-
         //Gerador do array de positivos e negativos
+        @SuppressWarnings("unchecked")
         List<Integer> listaMaxSum = new ArrayList<>();
         ArrayList<Integer> sequencia = new ArrayList<Integer>();
-
-//      limiteArray é o valor maximo de elementos do array analizado
+        //limiteArray é o valor maximo de elementos do array analizado
         Scanner scanner = new Scanner(System.in);
         System.out.println("Qual será o limite de elementos do array?");
         int limiteArray = scanner.nextInt();
-
         for (int i = 0; i<limiteArray; i++){
             Random random=new Random();
             int randomNumber=(random.nextInt(20)-10);
@@ -29,23 +44,27 @@ public class main {
         Integer[] array = listaMaxSum.toArray(new Integer[0]);
         System.out.println(" Sequencia analizada: " + listaMaxSum);
 
+        //captura de tempo inicio
         long tempoInicioFB = System.currentTimeMillis();
         //Chamada
         main.SubsequenciaSomaMaxFB(listaMaxSum,limiteArray);
+        //captura de tempo fim
         long tempoDecorridoFB = System.currentTimeMillis() - tempoInicioFB;
         //Tempo de execução FB
         System.out.println(" Tempo decorrido: " + tempoDecorridoFB +"ms");
         System.out.println(" T = O(N)^3");
         System.out.println(" O algoritmo faz O(n)^3 comparações, sendo três laços por iteração");
 
+        //captura de tempo inicio
         long tempoInicioDC = System.currentTimeMillis();
         //Chamada
         int RespostaDC = main.subsequenciaSomaMaxDC(listaMaxSum, 0,(listaMaxSum.size())-1);
         //Respostas do Algoritmo de Divisão e Conquista
         System.out.println("\n ===== ALGORITMO DIVISÃO E CONQUISTA (Subsequência de Soma Máxima) =====");
         System.out.println(" Soma máxima da sequência: " + RespostaDC);
-
+        //captura de tempo fim
         long tempoDecorridoDC = System.currentTimeMillis() - tempoInicioDC;
+
         //Tempo de execução DC
         System.out.println(" Tempo decorrido: " + tempoDecorridoDC +"ms");
         System.out.println(" T = O(n logn)");
@@ -54,6 +73,15 @@ public class main {
     }
 
     public static void SubsequenciaSomaMaxFB(List<Integer> listaMaxSum,int limiteArray){
+
+        /**
+         * @brief Subsequência de soma máxima com força bruta
+         *
+         * @param listaMaxSum Sequência de inteiros
+         * @param limiteArray numero limite de posições da sequência
+         *
+         * @return Soma da subsequência de soma máxima
+         */
 
         // ===== ALGORITMO DE FORÇA BRUTA
         int respostaFB = Integer.MIN_VALUE;
@@ -81,6 +109,16 @@ public class main {
     }
     static int subsequenciaSomaMaxDC(List<Integer> listaMaxSum,int primeiro,int ultimo){
 
+        /**
+         * @brief Subsequência de soma máxima com programação dinâmica (Divisão e conquista)
+         *
+         * @param listaMaxSum Sequência de inteiros.
+         * @param meio elemento na posição da metade da subsequência
+         * @param ultimo elemento na ultima posição da subsequência
+         *
+         * @return Soma da subsequência de soma máxima
+         */
+
         // ===== ALGORITMO DE DIVISÃO E CONQUISTA
 
         //caso base, array de 1 elemento
@@ -95,6 +133,17 @@ public class main {
     }
 
     static int somaMaxIntercalada(List<Integer> listaMaxSum,int primeiro,int meio, int ultimo){
+
+        /**
+         * @brief Procura da subsequência com soma maxima, nas duas partes da sequencia ( inicio-meio e fim-meio)
+         *
+         * @param listaMaxSum Sequência de inteiros.
+         * @param meio elemento na posição da metade da subsequência
+         * @param ultimo elemento na ultima posição da subsequência
+         *
+         * @return Subsequência com a soma maxima
+         */
+
         //verificar lado direito para o meio do array
         int soma = 0;
         int soma_dir = Integer.MIN_VALUE;
