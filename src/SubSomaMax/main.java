@@ -45,10 +45,9 @@ public class main {
         System.out.println("\n ===== ALGORITMO DIVISÃO E CONQUISTA (Subsequência de Soma Máxima) =====");
         System.out.println(" Soma máxima da sequência: " + RespostaDC);
 
-        long tempoDecorridoDC = System.currentTimeMillis() - tempoInicioFB;
+        long tempoDecorridoDC = System.currentTimeMillis() - tempoInicioDC;
         //Tempo de execução DC
         System.out.println(" Tempo decorrido: " + tempoDecorridoDC +"ms");
-
         System.out.println(" T = O(n logn)");
         System.out.println(" O algoritmo faz O(n) comparações a cada nivel de chamada recursiva e o número de níveis corresponde a O(log n)");
 
