@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
-import java.util.InputMismatchException;
+
 /**
  * @brief Resolve o problema de Subsequência de Soma Máxima
  *
@@ -24,8 +24,8 @@ public class Main {
     /**
      *
      * @brief Menu para escolha dos algoritmos implementados,
-     *        identificar o limite de elementos da sequência
-     *        impressão das respostas dos algoritmos
+     * @brief identificar o limite de elementos da sequência
+     * @brief impressão das respostas dos algoritmos
      *
      *
      */
@@ -51,6 +51,7 @@ public class Main {
                     System.out.println("Qual será o limite de elementos do array?");
                     //limiteArray é o valor maximo de elementos do array analizado
                     int limiteArray = scanner.nextInt();
+                    //-chamada do gerador
                     Main.gerarListaMaxSum(listaMaxSum,limiteArray);
 
                     //captura de tempo inicio
@@ -67,6 +68,7 @@ public class Main {
                     System.out.println(" O algoritmo faz O(n)^3 comparações, sendo três laços por iteração");
                     System.out.println(" Tempo decorrido: " + tempoDecorridoFB +"s");
                     break;
+
                 case 2:
                     listaMaxSum = new ArrayList<Integer>();
                     scanner = new Scanner(System.in);
@@ -89,6 +91,7 @@ public class Main {
                     System.out.println(" O algoritmo faz O(n) comparações a cada nivel de chamada recursiva e o número de níveis corresponde a O(log n)");
                     System.out.println(" Tempo decorrido: " + tempoDecorridoDC +"s");
                     break;
+
                 default:
                     System.out.println("\n  >>> Opção Inválida! <<<\n");
                     break;
@@ -118,7 +121,7 @@ public class Main {
         }
         Integer[] array = listaMaxSum.toArray(new Integer[0]);
 
-        System.out.println("Sequencia analizada: " + listaMaxSum);
+//        System.out.println("Sequencia analizada: " + listaMaxSum);
 
         return listaMaxSum;
     }
@@ -136,18 +139,17 @@ public class Main {
     public static int SubsequenciaSomaMaxFB(List<Integer> listaMaxSum,int limiteArray,int respostaFB){
 
         // ===== ALGORITMO DE FORÇA BRUTA
-//        respostaFB = Integer.MIN_VALUE;
 //        indiceArray é o indice do array
 //        indiceSubArray é o indice do sub array, de quem será calculado a sua soma maxima
 
-            for(int indiceArray = 1; indiceArray <= limiteArray; ++indiceArray ){
-            for (int indiceSubArray = 0; indiceSubArray < listaMaxSum.size(); ++indiceSubArray) {
+            for(int indiceArray = 1; indiceArray <= limiteArray; ++indiceArray ){ // O(n)
+            for (int indiceSubArray = 0; indiceSubArray < listaMaxSum.size(); ++indiceSubArray) { // O(n)
                 //if para caso se a soma dos indices que esta sendo percorrido ultrapassar o limite do array, definir a parada de procura.
                 if(indiceSubArray + indiceArray > limiteArray){
                     break;
                 }
                 int soma = 0;
-                for(int i = indiceSubArray; i < (indiceSubArray + indiceArray); i++){
+                for(int i = indiceSubArray; i < (indiceSubArray + indiceArray); i++){ // O(n)
                     soma = soma + listaMaxSum.get(i);
                 }
                 respostaFB = Math.max(respostaFB, soma);
