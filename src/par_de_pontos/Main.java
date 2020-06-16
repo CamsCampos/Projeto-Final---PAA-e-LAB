@@ -22,6 +22,7 @@ public class Main {
 
     System.out.println("--- ALGORITIMO PAR DE PONTOS MAIS PROXIMO ---");
     forcaBruta();   
+    DivisaoConquista(); 
 
     scanner.close();
   }
@@ -43,6 +44,22 @@ public class Main {
     System.out.printf("Conjuntos possíveis com tempo máximo de 5 segundos: %d\n", forcaBruta.max5);
   }
 
+  /**
+   * Inicia o algoritimo de Divisao e Conquista
+   */
+  private static void DivisaoConquista()
+  {
+    System.out.println("Utilizando divisão e conquista");
+    Dados dados = pegarDados();
+    ArrayList<Point> listPontos = gerarDados(dados);
+    DivisaoConquista divisao = new DivisaoConquista(listPontos);
+    Point resultado = divisao.comeca();
+
+    System.out.println("Resultado:");
+    System.out.println(resultado);
+    System.out.printf("Tempo: %dms (%d segundos)\n", divisao.tempo, divisao.tempo / 1000);
+    System.out.printf("Conjuntos possíveis com tempo máximo de 5 segundos: %d\n", divisao.max5);
+  }
   /**
    * Pegar os dados necessarios para o algoritimo x
    * Utiliza a classe Scanner para ler a entrada do usuario
