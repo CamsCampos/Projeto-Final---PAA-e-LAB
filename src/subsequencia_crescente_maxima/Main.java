@@ -36,7 +36,7 @@ public class Main {
 					+ "máxima de elementos em um conjunto para executar em até 5 segundos: ");
 			System.out.println("\n     | Subsequência Crescente Máxima: ");
 			System.out.println("     |    1 - Força bruta (75, sujeito à grandes variações) ");
-			System.out.println("     |    2 - Programação dinâmica (25.000) ");
+			System.out.println("     |    2 - Programação dinâmica (22.000) ");
 
 			System.out.print("\n Digite sua opção: ");
 			opcaoMenu = sc.nextInt();
